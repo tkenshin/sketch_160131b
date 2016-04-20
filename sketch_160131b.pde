@@ -3,10 +3,12 @@ PVector vertices[];
 PVector mousePos;
 
 float r;
+
 //=====================
 // Debug
 int debug = 0;
 PVector f1, f2;
+
 
 //=====================
 
@@ -49,7 +51,11 @@ boolean isHitLine(PVector p[], PVector mp, float er) {
     phd2 = (dot*dot) / pqd2;
     d2 = pmd2 - phd2;
     
+    
+    
     if(d2 < er*er ) {
+      ellipse(p1.x + vertices[i].x, p2.y + vertices[i].y, 10, 10);
+      ellipse(p2.x + vertices[i].x, p1.y + vertices[i].y, 10, 10);
       return true;
       
     }
@@ -84,14 +90,17 @@ void draw() {
     vertices[i].y = vertices[i].y + height / 2;
     
   }
-   
-}
-
-void mouseReleased() {
+  
+  ellipse(vertices[1].x, vertices[1].y, 10, 10);
+  
   if(isHitLine(vertices, mousePos, r)) {
     debug += 1;
     println("Hit count[" + debug + "]");
     
   }
+   
+}
+
+void mouseReleased() {
   
 }
